@@ -1,16 +1,17 @@
 class EmailParser
 
-  attr_accessor :emails
+  attr_reader :addresses_raw
 
-  def initialize(emails)
-    @emails = emails
+  def initialize(addresses_string)
+    @addresses_raw = addresses_string
   end
 
   def parse
-    # split into an array using the regex of "possible comma followed by white space"
-    # select from the array only those emails that are not blank spaces
-    # select only those unique emails
-    emails.split(/[,?\s]/).select{|email| email != ""}.uniq 
+    #need to review the bottom 2 methods bec I don't understand them -
+    #Blog post on regex????
+    addresses_raw.split(",").join.split.uniq
+    #addresses_raw.split(/[\s,]+/).uniq
+    #addresses_raw.split(/ |, |,/).uniq
   end
 
 end
